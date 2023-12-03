@@ -55,6 +55,7 @@ int main() {
                 second_index = buffer[i];
             }
         } else if (tester_index == 0) {
+            first_char:
             switch (buffer[i])
             {
             case 'o':
@@ -88,6 +89,7 @@ int main() {
             default:
                 memset(tester, 0, strlen(tester));
                 tester_index = 0;
+                tester[tester_index] = buffer[i];
                 break;
             }
         } else if (tester_index == 1) {
@@ -120,6 +122,7 @@ int main() {
             default:
                 memset(tester, 0, strlen(tester));
                 tester_index = 0;
+                goto first_char;
                 break;
             }
         } else if (tester_index == 2) {
@@ -129,20 +132,24 @@ int main() {
                 if (first_index_set == 0) {
                     first_index = 1 + 48;
                     tester_index = 0;
+                    memset(tester, 0, strlen(tester));
                     first_index_set = 1;
                 } else {
                     second_index = 1 + 48;
                     tester_index = 0;
+                    memset(tester, 0, strlen(tester));
                 }
                 break;
             case 'o':
                 if (first_index_set == 0) {
                     first_index = 2 + 48;
                     tester_index = 0;
+                    memset(tester, 0, strlen(tester));
                     first_index_set = 1;
                 } else {
                     second_index = 2 + 48;
                     tester_index = 0;
+                    memset(tester, 0, strlen(tester));
                 }        
                 break;
             case 'r':
@@ -161,10 +168,12 @@ int main() {
                 if (first_index_set == 0) {
                     first_index = 6 + 48;
                     tester_index = 0;
+                    memset(tester, 0, strlen(tester));
                     first_index_set = 1;
                 } else {
                     second_index = 6 + 48;
                     tester_index = 0;
+                    memset(tester, 0, strlen(tester));
                 }
                 break;
             case 'g':
@@ -178,29 +187,34 @@ int main() {
             default:
                 memset(tester, 0, strlen(tester));
                 tester_index = 0;
+                goto first_char;
                 break;
             }
         } else if (tester_index == 3) {
             switch (buffer[i])
             {
             case 'e':
-                if (tester == "five") {
+                if (tester[0] == 'f') {
                     if (first_index_set == 0) {
                         first_index = 5 + 48;
                         tester_index = 0;
+                        memset(tester, 0, strlen(tester));
                         first_index_set = 1;
                     } else {
                         second_index = 5 + 48;
                         tester_index = 0;
+                        memset(tester, 0, strlen(tester));
                     }
-                } else if (tester == "nine") {
+                } else if (tester[0] == 'n') {
                     if (first_index_set == 0) {
                         first_index = 9 + 48;
                         tester_index = 0;
+                        memset(tester, 0, strlen(tester));
                         first_index_set = 1;
                     } else {
                         second_index = 9 + 48;
                         tester_index = 0;
+                        memset(tester, 0, strlen(tester));
                     }
                 } else {
                     tester[tester_index] = buffer[i];
@@ -211,10 +225,12 @@ int main() {
                 if (first_index_set == 0) {
                     first_index = 4 + 48;
                     tester_index = 0;
+                    memset(tester, 0, strlen(tester));
                     first_index_set = 1;
                 } else {
                     second_index = 4 + 48;
                     tester_index = 0;
+                    memset(tester, 0, strlen(tester));
                 }
                 break;
             case 's':
@@ -229,15 +245,18 @@ int main() {
                 if (first_index_set == 0) {
                     first_index = 0 + 48;
                     tester_index = 0;
+                    memset(tester, 0, strlen(tester));
                     first_index_set = 1;
                 } else {
                     second_index = 0 + 48;
                     tester_index = 0;
+                    memset(tester, 0, strlen(tester));
                 }     
                 break;
             default:
                 memset(tester, 0, strlen(tester));
                 tester_index = 0;
+                goto first_char;
                 break;
             }
         } else if (tester_index == 4) {
@@ -247,42 +266,49 @@ int main() {
                 if (first_index_set == 0) {
                     first_index = 3 + 48;
                     tester_index = 0;
+                    memset(tester, 0, strlen(tester));
                     first_index_set = 1;
                 } else {
                     second_index = 3 + 48;
                     tester_index = 0;
+                    memset(tester, 0, strlen(tester));
                 }
                 break;
             case 'n':
                 if (first_index_set == 0) {
                     first_index = 7 + 48;
                     tester_index = 0;
+                    memset(tester, 0, strlen(tester));
                     first_index_set = 1;
                 } else {
                     second_index = 7 + 48;
                     tester_index = 0;
+                    memset(tester, 0, strlen(tester));
                 }         
                 break;
             case 't':
                 if (first_index_set == 0) {
                     first_index = 8 + 48;
                     tester_index = 0;
+                    memset(tester, 0, strlen(tester));
                     first_index_set = 1;
                 } else {
                     second_index = 8 + 48;
                     tester_index = 0;
+                    memset(tester, 0, strlen(tester));
                 }         
                 break;
             default:
                 memset(tester, 0, strlen(tester));
                 tester_index = 0;
+                goto first_char;
                 break;
             }
         } else {
             tester_index = 0;
         }
 
-        printf("char: %c\ttester: %s\tfirst_index: %d\tsecond_index: %d\tfirst_index_set: %d\n", buffer[i], tester, first_index-48, second_index-48, first_index_set);
+        printf("char: %c\ttester: %s\tfirst_index: %d\tsecond_index: %d\tfirst_index_set: %d\ttester_index: %d\n", buffer[i], tester, first_index-48, second_index-48, first_index_set, tester_index);
         // one
         // two
         // three
